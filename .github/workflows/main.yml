@@ -34,20 +34,37 @@ jobs:
     - name: Debug directory structure
       run: |
         pwd
+        echo "Root directory contents:"
         ls -la
+        echo "Frontend directory contents:"
         cd frontend
+        ls -la
+        echo "Frontend/src directory contents:"
         ls -la src/
+        echo "Content of index.tsx:"
         cat src/index.tsx
+        echo "Content of package.json:"
+        cat package.json
+        echo "Content of tsconfig.json:"
+        cat tsconfig.json
 
     - name: Install dependencies
       run: |
         cd frontend
         npm ci
 
-    - name: Build
+    - name: Build with debug
       run: |
         cd frontend
-        CI=false TSC_COMPILE_ON_ERROR=true GENERATE_SOURCEMAP=false npm run build
+        export NODE_ENV=production
+        export CI=false
+        export TSC_COMPILE_ON_ERROR=true
+        export GENERATE_SOURCEMAP=false
+        echo "Starting build..."
+        npm run build
+      env:
+        CI: false
+        DEBUG: "*"
 
     - name: Setup Pages
       uses: actions/configure-pages@v3
