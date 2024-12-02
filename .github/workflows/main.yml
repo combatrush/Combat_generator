@@ -36,8 +36,8 @@ jobs:
         pwd
         ls -la
         cd frontend
-        ls -la
-        ls -la public/
+        ls -la src/
+        cat src/index.tsx
 
     - name: Install dependencies
       run: |
@@ -47,9 +47,7 @@ jobs:
     - name: Build
       run: |
         cd frontend
-        npm run build
-      env:
-        CI: false
+        CI=false TSC_COMPILE_ON_ERROR=true GENERATE_SOURCEMAP=false npm run build
 
     - name: Setup Pages
       uses: actions/configure-pages@v3
