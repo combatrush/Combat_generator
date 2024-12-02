@@ -2,7 +2,7 @@
   "name": "combat-gods-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/combat_generator",
+  "homepage": "https://combatrush.github.io/Combat_generator",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
